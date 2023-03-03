@@ -31,6 +31,7 @@ layer:
     - pack: Keil::ARM_Compiler@1.7.2
 
   define:
+    - CMSIS_board_header="IMXRT1050_EVKB.h"
     - CODEC_WM8960_ENABLE
     - FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1
     - SKIP_SYSCLK_INIT
@@ -108,6 +109,7 @@ layer:
   groups:
     - group: Board
       files:
+        - file: ./IMXRT1050_EVKB.h
         - file: ./main.h
         - file: ./main.c
         - file: ./retarget_stdio.c

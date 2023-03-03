@@ -1,5 +1,5 @@
 /*---------------------------------------------------------------------------
- * Copyright (c) 2020-2021 Arm Limited (or its affiliates).
+ * Copyright (c) 2023 Arm Limited (or its affiliates).
  * All rights reserved.
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -16,20 +16,7 @@
  * limitations under the License.
  *---------------------------------------------------------------------------*/
 
-#ifndef MAIN_H__
-#define MAIN_H__
+#ifndef AVH_MPS3_Corstone_300_H_
+#define AVH_MPS3_Corstone_300_H_
 
-#include <stdint.h>
-
-/* Prototypes */
-extern uint32_t LPUART1_GetFreq    (void);
-extern void     LPUART1_InitPins   (void);
-extern void     LPUART1_DeinitPins (void);
-extern uint32_t LPUART3_GetFreq    (void);
-extern void     LPUART3_InitPins   (void);
-extern void     LPUART3_DeinitPins (void);
-
-extern int32_t  app_initialize     (void);
-extern void     app_main (void *argument);
-
-#endif
+#endif /* AVH_MPS3_Corstone_300_H_ */

@@ -31,6 +31,7 @@ layer:
     trustzone: off
 
   define:
+    - CMSIS_board_header="B_U585I_IOT02A.h"
     - MX_WIFI_SPI_DMA=0   # Do not use DMA if TZEN=1
 
   components:
@@ -88,6 +89,5 @@ layer:
   groups:
     - group: Board
       files:
-        - file: ./arduino.h
-        - file: ./arduino.c
+        - file: ./B_U585I_IOT02A.h
         - file: ./retarget_stdio.c

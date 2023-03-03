@@ -20,6 +20,9 @@
 #include  CMSIS_device_header
 #include "cmsis_os2.h"
 #include "cmsis_vio.h"
+#ifdef    CMSIS_shield_header
+#include  CMSIS_shield_header
+#endif
 #ifdef RTE_Compiler_EventRecorder
 #include "EventRecorder.h"
 #endif
@@ -28,11 +31,26 @@
 
 extern int stdio_init (void);
 
+#ifdef CMSIS_shield_header
+__WEAK int32_t shield_setup (void) {
+  return 0;
+}
+#endif
+
+__WEAK int32_t app_initialize (void) {
+  osThreadNew(app_main, NULL, NULL);
+  return 0;
+}
+
 int main (void) {
 
   stdio_init();                         // Initialize stdio
 
   vioInit();                            // Initialize Virtual I/O
+
+#ifdef CMSIS_shield_header
+  shield_setup();
+#endif
 
 #if defined(RTE_Compiler_EventRecorder) && \
     (defined(__MICROLIB) || \

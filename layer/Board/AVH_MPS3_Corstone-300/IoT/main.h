@@ -22,6 +22,7 @@
 #include <stdint.h>
 
 /* Prototypes */
-extern void app_initialize (void);
+extern int32_t app_initialize (void);
+extern void    app_main (void *argument);
 
 #endif

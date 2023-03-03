@@ -23,6 +23,9 @@
 #ifdef RTE_VIO_BOARD
 #include "cmsis_vio.h"
 #endif
+#ifdef    CMSIS_shield_header
+#include  CMSIS_shield_header
+#endif
 #ifdef RTE_Compiler_EventRecorder
 #include "EventRecorder.h"
 #endif
@@ -44,6 +47,17 @@ void     LPUART1_DeinitPins(void) { /* Not implemented */ }
 uint32_t LPUART3_GetFreq   (void) { return BOARD_BOOTCLOCKRUN_UART_CLK_ROOT; }
 void     LPUART3_InitPins  (void) { /* Done in BOARD_InitARDUINO_UART function */ }
 void     LPUART3_DeinitPins(void) { /* Not implemented */ }
+
+#ifdef CMSIS_shield_header
+__WEAK int32_t shield_setup (void) {
+  return 0;
+}
+#endif
+
+__WEAK int32_t app_initialize (void) {
+  osThreadNew(app_main, NULL, NULL);
+  return 0;
+}
 
 int main (void) {
   edma_config_t DmaConfig;
@@ -73,6 +87,10 @@ int main (void) {
 
 #ifdef RTE_VIO_BOARD
   vioInit();                            // Initialize Virtual I/O
+#endif
+
+#ifdef CMSIS_shield_header
+  shield_setup();
 #endif
 
 #if defined(RTE_Compiler_EventRecorder) && \

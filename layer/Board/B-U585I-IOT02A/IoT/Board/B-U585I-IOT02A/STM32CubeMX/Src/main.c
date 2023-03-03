@@ -26,11 +26,15 @@
 #ifdef    RTE_VIO_BOARD
 #include "cmsis_vio.h"
 #endif
+#ifdef    CMSIS_shield_header
+#include  CMSIS_shield_header
+#endif
 #if defined(RTE_Compiler_EventRecorder)
 #include "EventRecorder.h"
 #endif
 
 #include "WiFi_EMW3080.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,6 +102,7 @@ static void MX_UCPD1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
 /**
   * Override default HAL_GetTick function
   */
@@ -145,6 +150,18 @@ void HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin) {
       break;
   }
 }
+
+#ifdef CMSIS_shield_header
+__WEAK int32_t shield_setup (void) {
+  return 0;
+}
+#endif
+
+__WEAK int32_t app_initialize (void) {
+  osThreadNew(app_main, NULL, NULL);
+  return 0;
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -195,6 +212,10 @@ int main(void)
   /* USER CODE BEGIN 2 */
 #ifdef RTE_VIO_BOARD
   vioInit();
+#endif
+
+#ifdef CMSIS_shield_header
+  shield_setup();
 #endif
 
 #if defined(RTE_Compiler_EventRecorder) && \
