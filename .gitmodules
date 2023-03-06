@@ -1,0 +1,3 @@
+[submodule "interface/gpio"]
+	path = interface/gpio
+	url = https://github.com/RobertRostohar/Driver_GPIO
