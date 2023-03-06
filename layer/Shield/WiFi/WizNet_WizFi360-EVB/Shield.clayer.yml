@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Open-CMSIS-Pack/devtools/schemas/projmgr/1.5.0/tools/projmgr/schemas/clayer.schema.json
+
+layer:
+  type: Shield
+  description: WizFi360-EVB WiFi Shield
+
+  connections:
+    - connect: WizFi360-EVB WiFi
+      consumes:
+        - ARDUINO_UNO_UART
+        - CMSIS-RTOS2
+      provides:
+        - CMSIS_WiFi: 0
+
+  packs:
+    - pack: ARM::CMSIS-Driver@2.7.2
+
+  define:
+    - CMSIS_shield_header="WizNet_WizFi360.h"
+
+  components:
+    - component: Keil::CMSIS Driver:WiFi:WizFi360&UART
+
+  groups:
+    - group: Shield
+      files:
+        - file: ./WizNet_WizFi360.h

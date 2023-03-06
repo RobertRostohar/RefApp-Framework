@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Open-CMSIS-Pack/devtools/schemas/projmgr/1.5.0/tools/projmgr/schemas/clayer.schema.json
+
+layer:
+  type: Shield
+  description: ISM43362-E WiFi Shield
+
+  connections:
+    - connect: ISM43362-E WiFi
+      consumes:
+        - ARDUINO_UNO_SPI
+        - ARDUINO_UNO_D9
+        - ARDUINO_UNO_D10
+        - CMSIS-RTOS2
+      provides:
+        - CMSIS_WiFi: 0
+
+  packs:
+    - pack: ARM::CMSIS-Driver@2.7.2
+
+  define:
+    - CMSIS_shield_header="Inventek_ISMART43362.h"
+
+  components:
+    - component: Keil::CMSIS Driver:WiFi:ISM43362&SPI
+
+  groups:
+    - group: shield
+      files:
+        - file: ./Inventek_ISMART43362.h
