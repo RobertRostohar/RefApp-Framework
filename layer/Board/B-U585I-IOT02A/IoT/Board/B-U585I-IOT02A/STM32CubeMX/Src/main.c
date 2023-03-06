@@ -33,6 +33,7 @@
 #include "EventRecorder.h"
 #endif
 
+#include "GPIO_STM32U5xx.h"
 #include "WiFi_EMW3080.h"
 
 /* USER CODE END Includes */
@@ -82,9 +83,9 @@ PCD_HandleTypeDef hpcd_USB_OTG_FS;
 void SystemClock_Config(void);
 static void SystemPower_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_ADF1_Init(void);
-static void MX_ICACHE_Init(void);
 static void MX_GPDMA1_Init(void);
+static void MX_ICACHE_Init(void);
+static void MX_ADF1_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_I2C2_Init(void);
 static void MX_OCTOSPI1_Init(void);
@@ -133,22 +134,11 @@ HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority) {
   return HAL_OK;
 }
 
-/**
-  * @brief  EXTI line rising detection callback.
-  * @param  GPIO_Pin: Specifies the port pin connected to corresponding EXTI line.
-  * @retval None
-  */
-void HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin) {
-  switch (GPIO_Pin) {
-    case (MXCHIP_FLOW_Pin):
-      WiFi_EMW3080_Pin_FLOW_Rising_Edge();
-      break;
-    case (MXCHIP_NOTIFY_Pin):
-      WiFi_EMW3080_Pin_NOTIFY_Rising_Edge();
-      break;
-    default:
-      break;
-  }
+static void WiFi_EMW3080_Pin_FLOW_Event (ARM_GPIO_Pin_t pin, uint32_t event) {
+  WiFi_EMW3080_Pin_FLOW_Rising_Edge();
+}
+static void WiFi_EMW3080_Pin_NOTIFY_Event (ARM_GPIO_Pin_t pin, uint32_t event) {
+  WiFi_EMW3080_Pin_NOTIFY_Rising_Edge();
 }
 
 #ifdef CMSIS_shield_header
@@ -195,9 +185,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_ADF1_Init();
-  MX_ICACHE_Init();
   MX_GPDMA1_Init();
+  MX_ICACHE_Init();
+  MX_ADF1_Init();
   MX_I2C1_Init();
   MX_I2C2_Init();
   MX_OCTOSPI1_Init();
@@ -213,6 +203,12 @@ int main(void)
 #ifdef RTE_VIO_BOARD
   vioInit();
 #endif
+
+  // MXCHIP_FLOW Pin
+  Driver_GPIO0.Setup(GPIO_PORTG(15U), WiFi_EMW3080_Pin_FLOW_Event);
+
+  // MXCHIP_NOTIFY Pin
+  Driver_GPIO0.Setup(GPIO_PORTD(14U), WiFi_EMW3080_Pin_NOTIFY_Event);
 
 #ifdef CMSIS_shield_header
   shield_setup();

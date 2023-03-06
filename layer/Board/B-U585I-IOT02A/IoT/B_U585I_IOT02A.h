@@ -20,7 +20,7 @@
 #define B_U585I_IOT02A_H_
 
 #include "stm32u5xx_hal.h"
-//#include "GPIO_STM32U5xx.h"
+#include "GPIO_STM32U5xx.h"
 #include "Driver_I2C.h"
 #include "Driver_SPI.h"
 #include "Driver_USART.h"

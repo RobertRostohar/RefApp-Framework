@@ -16,6 +16,22 @@ layer:
         - CMSIS_VIO
         - ARDUINO_UNO_UART: 3
         - ARDUINO_UNO_SPI: 1
+        # - ARDUINO_UNO_I2C: 1
+        - ARDUINO_UNO_D2
+        - ARDUINO_UNO_D3
+        - ARDUINO_UNO_D4
+        - ARDUINO_UNO_D5
+        - ARDUINO_UNO_D6
+        - ARDUINO_UNO_D7
+        - ARDUINO_UNO_D8
+        - ARDUINO_UNO_D9
+        - ARDUINO_UNO_D10
+        - ARDUINO_UNO_D14
+        - ARDUINO_UNO_D15
+        - ARDUINO_UNO_D16
+        - ARDUINO_UNO_D17
+        - ARDUINO_UNO_D18
+        - ARDUINO_UNO_D19
         - STDIN
         - STDOUT
         - STDERR
@@ -87,6 +103,11 @@ layer:
     - component: Keil::Compiler&ARM Compiler:I/O:STDIN&User
 
   groups:
+    - group: GPIO Interface
+      files:
+        - file: ../../../../interface/gpio/include/Driver_GPIO.h
+        - file: ../../../../interface/gpio/driver/STM32U5xx/GPIO_STM32U5xx.h
+        - file: ../../../../interface/gpio/driver/STM32U5xx/GPIO_STM32U5xx.c
     - group: Board
       files:
         - file: ./B_U585I_IOT02A.h
