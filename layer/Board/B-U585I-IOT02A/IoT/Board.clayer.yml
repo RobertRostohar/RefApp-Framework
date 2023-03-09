@@ -47,7 +47,7 @@ layer:
     trustzone: off
 
   define:
-    - CMSIS_board_header="B_U585I_IOT02A.h"
+    - CMSIS_board_header="B_U585I_IOT02A_DK.h"
     - MX_WIFI_SPI_DMA=0   # Do not use DMA if TZEN=1
 
   components:
@@ -110,5 +110,5 @@ layer:
         - file: ../../../../interface/gpio/driver/STM32U5xx/GPIO_STM32U5xx.c
     - group: Board
       files:
-        - file: ./B_U585I_IOT02A.h
+        - file: ./B_U585I_IOT02A_DK.h
         - file: ./retarget_stdio.c

@@ -16,8 +16,8 @@
  * limitations under the License.
  *---------------------------------------------------------------------------*/
 
-#ifndef B_U585I_IOT02A_H_
-#define B_U585I_IOT02A_H_
+#ifndef B_U585I_IOT02A_DK_H_
+#define B_U585I_IOT02A_DK_H_
 
 #include "stm32u5xx_hal.h"
 #include "GPIO_STM32U5xx.h"
@@ -59,4 +59,4 @@
 extern ARM_DRIVER_SPI   Driver_SPI1;
 extern ARM_DRIVER_USART Driver_USART3;
 
-#endif /* B_U585I_IOT02A_H_ */
+#endif /* B_U585I_IOT02A_DK_H_ */
