@@ -42,9 +42,9 @@ void WiFi_ISM43362_Pin_Initialize (void) {
   // (for Data Ready pin external interrupt can also be setup here)
   // <code WiFi_ISM43362_Pin_Initialize>
   Driver_GPIO0.Setup(ARDUINO_UNO_D9,  NULL);  // DATARDY
-  Driver_GPIO0.GPIO_SetDirection(ARDUINO_UNO_D9,  ARM_GPIO_INPUT);
+  Driver_GPIO0.SetDirection(ARDUINO_UNO_D9,  ARM_GPIO_INPUT);
   Driver_GPIO0.Setup(ARDUINO_UNO_D10, NULL);  // SSN
-  Driver_GPIO0.GPIO_SetDirection(ARDUINO_UNO_D10, ARM_GPIO_OUTPUT);
+  Driver_GPIO0.SetDirection(ARDUINO_UNO_D10, ARM_GPIO_OUTPUT);
   // </code>
 }
 
@@ -56,7 +56,7 @@ void WiFi_ISM43362_Pin_Initialize (void) {
 void WiFi_ISM43362_Pin_Uninitialize (void) {
   // Add code for deinitializing Reset, Slave Select and Data Ready pins here
   // <code WiFi_ISM43362_Pin_Uninitialize>
-  Driver_GPIO0.GPIO_SetDirection(ARDUINO_UNO_D10, ARM_GPIO_INPUT);
+  Driver_GPIO0.SetDirection(ARDUINO_UNO_D10, ARM_GPIO_INPUT);
   // </code>
 }
 
@@ -86,7 +86,7 @@ void WiFi_ISM43362_Pin_RSTN (uint8_t rstn) {
 void WiFi_ISM43362_Pin_SSN (uint8_t ssn) {
   // Add code for driving Slave Select pin here
   // <code WiFi_ISM43362_Pin_SSN>
-  Driver_GPIO0.GPIO_SetOutput(ARDUINO_UNO_D10, ssn ? 0U : 1U);
+  Driver_GPIO0.SetOutput(ARDUINO_UNO_D10, ssn ? 0U : 1U);
   // </code>
 }
 
