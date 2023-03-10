@@ -6,6 +6,8 @@ layer:
   # variant: IoT-VSocket-Ethernet
   description: Board setup for IoT with VSocket and Ethernet interface
   for-device: ARM::SSE-300-MPS3
+  processor:
+    endian: little
 
   connections:
     - connect: AVH_MPS3_Cortsone-300 Board
