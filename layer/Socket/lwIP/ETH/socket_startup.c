@@ -33,7 +33,8 @@ static void eth0_thread (void *argument) {
       sys_old += ms;
       ethernetif_check_link (&netif);
     }
-    osThreadYield ();
+    osDelay (2U);
+//  osThreadYield ();
   }
 }
 
