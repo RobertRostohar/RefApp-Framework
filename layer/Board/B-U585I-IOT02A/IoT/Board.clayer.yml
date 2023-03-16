@@ -40,7 +40,7 @@ layer:
         - Heap: 65536
 
   packs:
-    - pack: Keil::STM32U5xx_DFP@2.0.0
+    - pack: Keil::STM32U5xx_DFP@2.1.0
     - pack: Keil::B-U585I-IOT02A_BSP@1.0.0
     - pack: ARM::CMSIS@5.9.0
     - pack: Keil::ARM_Compiler@1.7.2
@@ -50,7 +50,7 @@ layer:
     - MX_WIFI_SPI_DMA=0   # Do not use DMA if TZEN=1
 
   components:
-    - component: Keil::Device:Startup
+    - component: Keil::Device:Startup&Source C
 
     - component: Keil::Device:STM32Cube Framework:STM32CubeMX
 
@@ -97,9 +97,11 @@ layer:
     - component: Keil::CMSIS Driver:WiFi:EMW3080
 
     - component: Keil::Compiler&ARM Compiler:Event Recorder&DAP
-    - component: Keil::Compiler&ARM Compiler:I/O:STDERR&User
-    - component: Keil::Compiler&ARM Compiler:I/O:STDOUT&User
-    - component: Keil::Compiler&ARM Compiler:I/O:STDIN&User
+    # - component: ARM::CMSIS:Event Recorder&DAP
+
+    # - component: Compiler:I/O:STDERR&User
+    # - component: Compiler:I/O:STDOUT&User
+    # - component: Compiler:I/O:STDIN&User
 
   groups:
     - group: GPIO Interface
@@ -110,4 +112,22 @@ layer:
     - group: Board
       files:
         - file: ./B_U585I_IOT02A_DK.h
+        - file: ../../../../interface/clib/arm/retarget_io.c
+          define:
+            - RTE_Compiler_IO_STDIN
+            - RTE_Compiler_IO_STDIN_User
+            - RTE_Compiler_IO_STDOUT
+            - RTE_Compiler_IO_STDOUT_User
+            - RTE_Compiler_IO_STDERR
+            - RTE_Compiler_IO_STDERR_User
+          for-compiler: AC6
+        - file: ../../../../interface/clib/gcc/retarget_io.c
+          define:
+            - RTE_Compiler_IO_STDIN
+            - RTE_Compiler_IO_STDIN_User
+            - RTE_Compiler_IO_STDOUT
+            - RTE_Compiler_IO_STDOUT_User
+            - RTE_Compiler_IO_STDERR
+            - RTE_Compiler_IO_STDERR_User
+          for-compiler: GCC
         - file: ./retarget_stdio.c

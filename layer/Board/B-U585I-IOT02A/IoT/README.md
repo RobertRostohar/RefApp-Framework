@@ -17,9 +17,9 @@ Refer to ["Migrate STM32 Based Example Projects to Custom Hardware"](https://git
 ### System Configuration
 
 | System resource         | Setting
-|:------------------------|:----------------------------------------
-| Heap                    | 64 kB (configured in the startup file)
-| Stack (MSP)             | 1 kB (configured in the startup file)
+|:------------------------|:--------------------------------------------
+| Heap                    | 64 kB (configured in the linker script file)
+| Stack (MSP)             | 1 kB (configured in the linker script file)
 
 ### STDIO mapping
 
