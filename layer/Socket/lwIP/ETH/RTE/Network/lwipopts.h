@@ -215,7 +215,7 @@
    ------------------------------------
 */
 #define TCPIP_THREAD_NAME               "tcpip_thread"
-#define TCPIP_THREAD_STACKSIZE          0
+#define TCPIP_THREAD_STACKSIZE          1024
 #define TCPIP_THREAD_PRIO               osPriorityNormal
 #define TCPIP_MBOX_SIZE                 16
 #define SLIPIF_THREAD_NAME              "slipif_loop"

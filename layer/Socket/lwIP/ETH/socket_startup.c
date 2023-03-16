@@ -1,5 +1,5 @@
 /* -----------------------------------------------------------------------------
- * Copyright (c) 2020 Arm Limited (or its affiliates). All rights reserved.
+ * Copyright (c) 2020-2023 Arm Limited (or its affiliates). All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -21,6 +21,8 @@
 #include "lwip/tcpip.h"
 #include "lwip/dhcp.h"
 
+#define ETH0_THREAD_STACKSIZE   1024U
+
 static struct netif netif;
 
 static void eth0_thread (void *argument) {
@@ -39,6 +41,11 @@ static void eth0_thread (void *argument) {
 }
 
 static void lwip_add_eth (void *arg) {
+  static const osThreadAttr_t eth0_attr = { 
+    .name       = "eth0_thread",
+    .stack_size = ETH0_THREAD_STACKSIZE
+  };
+
   // Add network interface
   netif_add(&netif, NULL, NULL, NULL, NULL, &ethernetif_init, &tcpip_input);
 
@@ -47,7 +54,7 @@ static void lwip_add_eth (void *arg) {
   netif_set_up(&netif);
   dhcp_start (&netif);
 
-  osThreadNew(eth0_thread, NULL, NULL);
+  osThreadNew(eth0_thread, NULL, &eth0_attr);
 }
 
 int32_t socket_startup (void) {
