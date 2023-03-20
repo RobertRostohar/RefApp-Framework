@@ -6,7 +6,7 @@ MPS3 platform for Corstone-300 simulated by Arm Virtual Hardware Targets (VHT).
 The following models are available:
  - VHT_MPS3_Corstone_SSE-300: Corstone-300 for MPS3
  - VHT_Corstone_SSE-300_Ethos-U55: Corstone-300 with Ethos-U55 for MPS3
- - VHT_Corstone_SSE-300_Ethos-U65: Corstone-300 with Ethos-U55 for MPS3
+ - VHT_Corstone_SSE-300_Ethos-U65: Corstone-300 with Ethos-U65 for MPS3
 
 Running the VHT in uVision requires the following settings:
  - open "Options for Target"
