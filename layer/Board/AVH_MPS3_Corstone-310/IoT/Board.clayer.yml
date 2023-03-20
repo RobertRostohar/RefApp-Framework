@@ -50,7 +50,7 @@ layer:
     - component: ARM::CMSIS Driver:USART
     - component: Keil::CMSIS Driver:Ethernet:ETH_LAN91C111
 
-    - component: Keil::Compiler&ARM Compiler:Event Recorder&DAP
+    - component: Keil::Compiler&ARM Compiler:Event Recorder&Semihosting
     # - component: ARM::CMSIS:Event Recorder&DAP
 
     # - component: Compiler:I/O:STDERR&User
