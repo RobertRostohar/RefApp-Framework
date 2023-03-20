@@ -51,9 +51,11 @@ layer:
     - component: Keil::CMSIS Driver:Ethernet:ETH_LAN91C111
 
     - component: Keil::Compiler&ARM Compiler:Event Recorder&DAP
-    - component: Keil::Compiler&ARM Compiler:I/O:STDERR&User
-    - component: Keil::Compiler&ARM Compiler:I/O:STDOUT&User
-    - component: Keil::Compiler&ARM Compiler:I/O:STDIN&User
+    # - component: ARM::CMSIS:Event Recorder&DAP
+
+    # - component: Compiler:I/O:STDERR&User
+    # - component: Compiler:I/O:STDOUT&User
+    # - component: Compiler:I/O:STDIN&User
 
   groups:
     - group: Board
@@ -61,5 +63,26 @@ layer:
         - file: ./AVH_MPS3_Corstone_310.h
         - file: ./main.h
         - file: ./main.c
+        - file: ../../../../interface/clib/arm/retarget_io.c
+          define:
+            - RTE_Compiler_IO_STDIN
+            - RTE_Compiler_IO_STDIN_User
+            - RTE_Compiler_IO_STDOUT
+            - RTE_Compiler_IO_STDOUT_User
+            - RTE_Compiler_IO_STDERR
+            - RTE_Compiler_IO_STDERR_User
+          for-compiler: AC6
+        - file: ../../../../interface/clib/gcc/retarget_io.c
+          define:
+            - RTE_Compiler_IO_STDIN
+            - RTE_Compiler_IO_STDIN_User
+            - RTE_Compiler_IO_STDOUT
+            - RTE_Compiler_IO_STDOUT_User
+            - RTE_Compiler_IO_STDERR
+            - RTE_Compiler_IO_STDERR_User
+          for-compiler: GCC
         - file: ./retarget_stdio.c
         - file: ./RTE/Device/SSE-310-MPS3/corstone310_mps3_s.sct
+          for-compiler: AC6
+        - file: ./RTE/Device/SSE-310-MPS3/corstone310_mps3_s.ld
+          for-compiler: GCC
