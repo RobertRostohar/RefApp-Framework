@@ -88,9 +88,17 @@ The example project can be re-configured to work on custom hardware. Refer to ["
 | MCI0         | USDHC1
 | USART3       | LPUART3
 
+### CMSIS-Driver Virtual I/O mapping
+
 | CMSIS-Driver VIO  | Physical board hardware
 |:------------------|:-----------------------
 | vioBUTTON0        | User Button SW8 (WAKEUP)
 | vioLED0           | User LED (GPIO_AD_B0_09)
 | vioMotionAccelero | 3-Axis Accelerometer (FXOS8700CQ)
 | vioMotionMagneto  | 3-Axis Magnetometer (FXOS8700CQ)
+
+### Arduino UNO mapping
+
+| Arduino resource  | Driver
+|:------------------|:-------------------------------
+| UART (D0,D1)      | USART3 Driver (ARDUINO_UNO_UART)
