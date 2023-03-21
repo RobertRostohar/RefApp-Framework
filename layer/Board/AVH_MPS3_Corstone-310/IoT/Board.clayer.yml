@@ -32,8 +32,9 @@ layer:
     - CMSIS_board_header="AVH_MPS3_Corstone_310.h"
 
   misc:
-    - Link:
-      - '--diag_suppress 6314,6848'
+    - for-compiler: AC6
+      Link:
+        - '--diag_suppress 6314,6848'
 
   components:
     - component: ARM::Device:Definition
