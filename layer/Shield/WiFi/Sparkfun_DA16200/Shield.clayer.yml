@@ -9,7 +9,7 @@ layer:
       consumes:
         - ARDUINO_UNO_UART
         - ARDUINO_UNO_D4
-        - ARDUINO_UNO_D5
+      # - ARDUINO_UNO_D5
         - CMSIS-RTOS2
       provides:
         - CMSIS_WiFi: 0
@@ -27,3 +27,4 @@ layer:
     - group: Shield
       files:
         - file: ./Sparkfun_DA16200.h
+        - file: ./Sparkfun_DA16200.c

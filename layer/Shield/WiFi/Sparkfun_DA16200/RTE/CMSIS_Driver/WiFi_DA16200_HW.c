@@ -42,8 +42,8 @@ void WiFi_DA16200_Pin_Initialize (void) {
   // <code WiFi_DA16200_Pin_Initialize>
   Driver_GPIO0.Setup(ARDUINO_UNO_D4, NULL);  // RTC_PWR_KEY
   Driver_GPIO0.SetDirection(ARDUINO_UNO_D4, ARM_GPIO_OUTPUT);
-  Driver_GPIO0.Setup(ARDUINO_UNO_D5, NULL);  // RTC_WAKEUP_UP1
-  Driver_GPIO0.SetDirection(ARDUINO_UNO_D5, ARM_GPIO_OUTPUT);
+//Driver_GPIO0.Setup(ARDUINO_UNO_D5, NULL);  // RTC_WAKEUP_UP1
+//Driver_GPIO0.SetDirection(ARDUINO_UNO_D5, ARM_GPIO_OUTPUT);
   // </code>
 }
 
@@ -85,7 +85,7 @@ void WiFi_DA16200_Pin_RTC_PWR_KEY (uint8_t state) {
 void WiFi_DA16200_Pin_RTC_WAKE_UP1 (uint8_t state) {
   // Add code for driving RTC_WAKE_UP1 pin here
   // <code WiFi_DA16200_Pin_RTC_WAKE_UP1>
-  Driver_GPIO0.SetOutput(ARDUINO_UNO_D5, state ? 0U : 1U);
+//Driver_GPIO0.SetOutput(ARDUINO_UNO_D5, state ? 0U : 1U);
   // </code>
 }
 
