@@ -24,7 +24,7 @@ layer:
     - component: Keil::Network&MDK-Plus:CORE&IPv4 Debug
       for-context: .Debug
     - component: Keil::Network&MDK-Plus:CORE&IPv4 Release
-      for-context: .Release
+      not-for-context: .Debug
     - component: Keil::Network&MDK-Plus:Interface:ETH
     - component: Keil::Network&MDK-Plus:Service:DNS Client
     - component: Keil::Network&MDK-Plus:Socket:BSD
