@@ -1,3 +1,5 @@
+DEPRECATED: moved to https://github.com/Open-CMSIS-Pack/RefApp-Framework
+
 # Reference Application Framework
 
 Example of standardized [Reference Application Framework](https://github.com/Open-CMSIS-Pack/devtools/blob/main/tools/projmgr/docs/Manual/RefApp-Framework.md) 
