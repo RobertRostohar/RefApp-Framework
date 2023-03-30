@@ -23,4 +23,5 @@ int32_t shield_setup (void) {
   // Setup pins (DA16200 driver is not calling WiFi_DA16200_Pin_Initialize)
   Driver_GPIO0.Setup(ARDUINO_UNO_D4, NULL);  // RTC_PWR_KEY
   Driver_GPIO0.SetDirection(ARDUINO_UNO_D4, ARM_GPIO_OUTPUT);
+  return 0;
 }
